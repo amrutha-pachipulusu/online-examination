@@ -1,0 +1,48 @@
+import java.util.*;
+public class Main {
+Scanner scobj = new Scanner(System.in);
+HashMap<String,Integer> Details = new HashMap<String,Integer>();
+    public void User_Login() {
+		Details.put("Ammu",1234);
+		System.out.println("\n------ WELCOME TO THE ONLINE EXAM PORTAL ------");
+		String Uname;
+		System.out.println("Enter UserName : ");
+		Uname = scobj.next();
+		int PWD;
+		System.out.println("Enter Password : ");
+		PWD= scobj.nextInt();
+		if(Details.containsKey(Uname)) {
+			if(Details.get(Uname)==PWD){
+				System.out.println("\n Welcome @ User");
+				Options_Menu();	}
+			else {
+				System.out.println("Please Enter Valid Password For: "+Uname);
+				User_Login();    }
+        }
+		else{
+			System.out.println("Please Enter Valid User Name");
+		}
+
+	}
+	public void Options_Menu() {
+		int Choice;
+		System.out.println("===User Menu===");
+		System.out.println("1.Update Profile \n 2.Write Exam \n 3.Exit ");
+		System.out.println("Enter The Choice: ");
+		Choice = scobj.nextInt();
+		switch(Choice) {
+		case 1:
+			Details=Update_Details();
+			Options_Menu();
+			break;
+		case 2:
+			Examination();
+			Options_Menu();
+			break;
+		case 3:
+            System.out.println("Thanks For Using!!!");
+			System.exit(0);
+			break;
+		default:
+			System.out.println("Please Enter Number in User Menu Only");
+		}
